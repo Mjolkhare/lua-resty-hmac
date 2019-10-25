@@ -1,5 +1,5 @@
 
-local str_util = require "resty.string"
+local str_util = require "nginx.resty.string"
 local to_hex = str_util.to_hex
 local ffi = require "ffi"
 local ffi_new = ffi.new

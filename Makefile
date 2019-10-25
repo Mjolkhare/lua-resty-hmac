@@ -18,3 +18,7 @@ install: all
 
 test: install
 	LUA_PATH="$(LUA_LIB_DIR)/?.lua;;" TEST_NGINX_USE_VALGRIND=$(VALGRIND) TEST_NGINX_CHECK_LEAK=$(CHECK_LEAK) TEST_NGINX_LOAD_MODULES="$(MODULES)" prove -I../test-nginx/lib -r t
+
+rpm:
+	tar cvfz ~/rpmbuild/SOURCES/lua-resty-hmac.tar.gz --transform "s/^lib/lua-resty-hmac/" lib
+	rpmbuild -ba rpm.spec --define="GBRANCH $(GBRANCH)"  --define="GCOMMIT $(GCOMMIT)"
